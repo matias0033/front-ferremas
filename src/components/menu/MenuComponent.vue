@@ -2,8 +2,8 @@
     <v-card>
         <v-layout>
             <v-app-bar color="primary">
-                <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"
-                    v-if="route.path == '/gestion' || route.path == '/productos' "></v-app-bar-nav-icon>
+                <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" v-if="route.path == '/gestion' || route.path == '/productos' ">
+                </v-app-bar-nav-icon>
 
 
                 <LogoComponent class="ml-10" />
@@ -32,7 +32,7 @@
             </v-navigation-drawer>
 
             <v-main class="tamanho">
-                <v-col v-col cols="12" lg="12" v-if="route.path !== '/'">
+                <v-col cols="12" lg="12" v-if="route.path !== '/'">
                     <v-row>
 
                         <v-col cols="12" class="text-end">
@@ -53,15 +53,8 @@ import router from '@/router';
 
 
 const drawer = ref(false);
-
 const expand = ref(false);
-
-
 const route = useRoute();
-
-
-
-
 
 const keyDownHandler = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
@@ -83,7 +76,7 @@ onMounted(() => {
 
 const salirApp = () => {
     localStorage.clear();
-    router.push({ path: '/login' });
+    router.push({ path: '/login' })
 };
 
 
