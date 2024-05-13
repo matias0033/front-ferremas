@@ -1,10 +1,10 @@
 <template>
 
   <v-app>
-    <MenuComponent  v-if="route().path != '/login'"   />
+    <MenuComponent  v-if="route.path != '/login'"   />
 
     <v-main >
-      <router-view v-if="route().path  === '/' || route().path === '/login'" />
+      <router-view v-if="route.path  === '/' || route.path === '/login'" />
     </v-main>
   </v-app>
   <!-- <AppFooter /> -->
@@ -14,9 +14,7 @@
 //
 
 
-const route = () => {
-  return useRoute();
-};
+const route = useRoute();
 
 
 </script>

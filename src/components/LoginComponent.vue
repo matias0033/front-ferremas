@@ -10,7 +10,7 @@
                         <span class="headline">Login</span>
                     </v-card-title>
                     <v-card-text>
-                        <v-form > <!-- @submit.prevent="login" -->
+                        <v-form> <!-- @submit.prevent="login" -->
                             <v-text-field v-model="loginRequest.correo" label="Email" type="email" required
                                 variant="underlined"></v-text-field>
                             <v-text-field v-model="loginRequest.password" label="Password" type="password" required
@@ -64,8 +64,10 @@ const login = async () => {
             // Guardar token en local storage
 
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('nameUser', response.data.userInfo.nombres + ' ' + response.data.userInfo.apellidos);
+            localStorage.setItem('emailUser', response.data.userInfo.correo);
 
-            router.push('/gestion');
+            router.push('/');
 
 
 

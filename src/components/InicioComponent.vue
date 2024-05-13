@@ -1,10 +1,6 @@
 <template>
   <v-container fluid>
 
-    <!-- {{ lol ? lol : ''}}
-
-    <v-btn>ejecutar lol</v-btn> -->
-
 
     <v-row justify="center">
       <v-col cols="12" lg="3">
@@ -28,8 +24,8 @@
 
               <v-col cols="12" xl="12">
                 <div class="text-center">
-                  <p style="color: gray">@mvillegas</p>
-                  <strong style="font-size: 22px">MATIAS VILLEGAS</strong>
+                  <p style="color: gray">{{ emailUser   }}</p>
+                  <strong style="font-size: 22px">{{nameUser?.toUpperCase()}}</strong>
                 </div>
               </v-col>
 
@@ -37,8 +33,8 @@
                 <v-divider></v-divider>
 
                 <div class="text-center" style="margin-top: 15px">
-                  <v-icon size="35" class="mr-5 mt-7">mdi-information-outline</v-icon>
-                  <v-icon size="35" class="mt-7">mdi-cog</v-icon>
+                  <!-- ICONO SALIR -->
+                  <v-icon size="35" class="ml-5 mt-7" @click="salirApp()">mdi-exit-to-app</v-icon>
                 </div>
 
               </v-col>
@@ -52,33 +48,14 @@
       <v-col cols="12" lg="6">
         <v-row class="text-center">
 
-          <v-col cols="4">
+          <v-col cols="6">
             <v-card elevation="2" class="py-8" @click="navegarRuta('/gestion')"
               rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Pedidos">
-              <!-- <v-overlay
-                opacity=".06"
-                scrim="primary"
-                contained
-                model-value
-                persistent
-              /> -->
-            </v-card>
-          </v-col>
-          <v-col cols="4">
-            <v-card elevation="2" class="py-8" href="https://discord.vuetifyjs.com" rel="noopener noreferrer"
-              rounded="lg" subtitle="" target="_blank" title="Clientes">
-              <!-- <v-overlay
-                opacity=".06"
-                scrim="primary"
-                contained
-                model-value
-                persistent
-              /> -->
             </v-card>
           </v-col>
 
-          <v-col cols="4">
-            <v-card elevation="2" class="py-8" href="https://vuetifyjs.com/components/all" rel="noopener noreferrer"
+          <v-col cols="6">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/productos')"rel="noopener noreferrer"
               rounded="lg" subtitle="" target="_blank" title="Productos">
             </v-card>
           </v-col>
@@ -114,6 +91,14 @@ onMounted(() => {
 const navegarRuta = (ruta: string) => {
   router.push( { path: ruta });
 };
+
+const salirApp = () => {
+  localStorage.clear();
+  router.push( { path: '/login' });
+};
+
+const nameUser = localStorage.getItem('nameUser');
+const emailUser = localStorage.getItem('emailUser');
 
 </script>
 

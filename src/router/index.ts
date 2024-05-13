@@ -39,6 +39,14 @@ const routes = [
     component: () => import("@/pages/LoginView.vue"),
   },
   {
+    path: "/productos",
+    name: "productos",
+    component: () => import("@/pages/ProductoView.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/",
     redirect: "/",
   },
