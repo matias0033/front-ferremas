@@ -1,6 +1,7 @@
 <template>
 
   <v-app>
+
     <MenuComponent v-if="route.path != '/login'"   />
 
     <v-main >
