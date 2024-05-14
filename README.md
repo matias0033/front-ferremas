@@ -44,6 +44,12 @@ To deploy this project run
 ```bash
  npm run dev
 ```
+
+To implement this project remotely
+
+```http
+ http://172.172.245.209:8004/login
+```
 ## User Login
 
 | Type |  Parameter   | 
