@@ -13,25 +13,16 @@ const routes = [
     path: "/",
     name: "inicio",
     component: () => import("../pages/InicioView.vue"),
-    meta: {
-      requiresAuth: true,
-    },
   },
   {
     path: "/client/:id",
     name: "client",
     component: () => import("@/pages/ClienteView.vue"),
-    meta: {
-      requiresAuth: true,
-    },
   },
   {
     path: "/gestion",
     name: "gestion",
     component: () => import("@/pages/GestionView.vue"),
-    meta: {
-      requiresAuth: true,
-    },
   },
   {
     path: "/login",
@@ -42,9 +33,16 @@ const routes = [
     path: "/productos",
     name: "productos",
     component: () => import("@/pages/ProductoView.vue"),
-    meta: {
-      requiresAuth: true,
-    },
+  },
+  {
+    path: "/orden-compra",
+    name: "orden-compra",
+    component: () => import("@/pages/CompraView.vue"),
+  },
+  {
+    path: "/inventario",
+    name: "inventario",
+    component: () => import("@/pages/InventarioView.vue"),
   },
   {
     path: "/",

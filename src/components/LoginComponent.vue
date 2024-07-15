@@ -48,7 +48,6 @@ const loginRequest = ref<LoginRequest>({
 
 const login = async () => {
 
-
     const { correo, password } = loginRequest.value;
 
     const body = {
@@ -62,21 +61,16 @@ const login = async () => {
             console.log(response.data);
 
             // Guardar token en local storage
-
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('nameUser', response.data.userInfo.nombres + ' ' + response.data.userInfo.apellidos);
             localStorage.setItem('emailUser', response.data.userInfo.correo);
+            localStorage.setItem('idUsuario', response.data.userInfo.idUsuario);
 
             router.push('/');
-
-
-
-
         })
         .catch(error => {
             alert(error.response.data.message)
         });
-
 
 };
 

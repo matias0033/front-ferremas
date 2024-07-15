@@ -48,15 +48,25 @@
       <v-col cols="12" lg="6">
         <v-row class="text-center">
 
-          <v-col cols="6">
+          <v-col cols="4">
             <v-card elevation="2" class="py-8" @click="navegarRuta('/gestion')"
-              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Pedidos">
+              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Mis compras">
             </v-card>
           </v-col>
 
-          <v-col cols="6">
-            <v-card elevation="2" class="py-8" @click="navegarRuta('/productos')"rel="noopener noreferrer"
+          <v-col cols="4">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/productos')" rel="noopener noreferrer"
               rounded="lg" subtitle="" target="_blank" title="Productos">
+            </v-card>
+          </v-col>
+          <!-- <v-col cols="4">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/orden-compra')"
+              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Orden de compra">
+            </v-card>
+          </v-col> -->
+          <v-col cols="4">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/inventario')"
+              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Inventario">
             </v-card>
           </v-col>
 

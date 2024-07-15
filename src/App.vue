@@ -2,10 +2,16 @@
 
   <v-app>
 
-    <MenuComponent v-if="route.path != '/login'"   />
+    <MenuComponent v-if="route.path != '/login'" />
 
-    <v-main >
-      <router-view v-if="route.path  != '/' || route.path === '/login' || route.path != '/productos' || route.path != '/gestion'" />
+    <v-main>
+      <router-view v-if="
+        route.path != '/' &&
+        route.path === '/login' &&
+        route.path != '/productos' &&
+        route.path != '/gestion' &&
+        route.path != '/inventario' &&
+        route.path != '/orden-compra'" />
     </v-main>
   </v-app>
   <!-- <AppFooter /> -->

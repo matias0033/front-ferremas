@@ -7,13 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    CompraComponent: typeof import('./components/CompraComponent.vue')['default']
     GestionComponent: typeof import('./components/GestionComponent.vue')['default']
     InicioComponent: typeof import('./components/InicioComponent.vue')['default']
+    InventarioComponent: typeof import('./components/InventarioComponent.vue')['default']
     LoginComponent: typeof import('./components/LoginComponent.vue')['default']
     LogoComponent: typeof import('./components/LogoComponent.vue')['default']
     MenuComponent: typeof import('./components/menu/MenuComponent.vue')['default']
+    OrdenCompraComponent: typeof import('./components/OrdenCompraComponent.vue')['default']
     ProductoComponent: typeof import('./components/ProductoComponent.vue')['default']
+    RolesComponent: typeof import('./components/RolesComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UsuariosComponent: typeof import('./components/UsuariosComponent.vue')['default']
   }
 }
