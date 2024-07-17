@@ -5,7 +5,9 @@
                 <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer" v-if="route.path == '/gestion' || 
                                                                                         route.path == '/productos' ||
                                                                                         route.path == '/inventario'||
-                                                                                        route.path == '/orden-compra'  ">
+                                                                                        route.path == '/orden-compra' ||
+                                                                                        route.path == '/usuarios' ||
+                                                                                        route.path == '/roles'   ">
                 </v-app-bar-nav-icon>
 
 
@@ -26,6 +28,9 @@
                         <v-list-item title="Productos" to="/productos" ></v-list-item>
                         <v-list-item title="Inventario" to="/inventario"></v-list-item>
                         <v-list-item title="Mis compras" to="/gestion"></v-list-item>
+
+                        <v-list-item title="Usuarios" to="/usuarios"></v-list-item>
+                        <v-list-item title="Roles" to="/roles"></v-list-item>
                         <!-- <v-list-item title="Orden de compra" to="/orden-compra"></v-list-item> -->
                     </v-list>
                 </v-container>

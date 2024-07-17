@@ -235,9 +235,9 @@ const resetEditedItem = () => {
     } as any;
 };
 
-onMounted(() => {
-    obtenerProductos();
-    obtenerCategorias();
-    obtenerProveedor();
+onMounted(async() => {
+    await obtenerProductos();
+    await obtenerCategorias();
+    await obtenerProveedor();
 });
 </script>

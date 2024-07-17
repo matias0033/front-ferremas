@@ -45,6 +45,16 @@ const routes = [
     component: () => import("@/pages/InventarioView.vue"),
   },
   {
+    path: "/roles",
+    name: "roles",
+    component: () => import("@/pages/RolesView.vue"),
+  },
+  {
+    path: "/usuarios",
+    name: "usuarios",
+    component: () => import("@/pages/UsuariosView.vue"),
+  },
+  {
     path: "/",
     redirect: "/",
   },
