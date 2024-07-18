@@ -7,7 +7,7 @@
                     <v-card-text>
 
                         <v-col cols="12" lg="6">
-                            <h2>Usuarios</h2>
+                            <h2>Usuarios (Administrador)</h2>
 
                             <v-divider class="mt-3"></v-divider>
                         </v-col>
@@ -18,9 +18,9 @@
                                 <v-col cols="6">
                                     <h3>Listado</h3>
                                 </v-col>
-                                <v-col cols="6" class="text-right">
+                                <!-- <v-col cols="6" class="text-right">
                                     <v-btn color="primary" size="small" class="mb-1">Nuevo Usuario</v-btn>
-                                </v-col>
+                                </v-col> -->
                             </v-row>
                         </v-col>
                         <v-col cols="12">

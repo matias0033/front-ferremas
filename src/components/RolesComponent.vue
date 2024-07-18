@@ -7,7 +7,7 @@
                     <v-card-text>
 
                         <v-col cols="12" lg="6">
-                            <h2>Roles</h2>
+                            <h2>Roles (Administrador)</h2>
 
                             <v-divider class="mt-3"></v-divider>
                         </v-col>
@@ -19,7 +19,7 @@
                                     <h3>Listado</h3>
                                 </v-col>
                                 <v-col cols="6" class="text-right">
-                                    <v-btn color="primary" size="small" class="mb-1" @click="dialog = true">Nuevo
+                                    <v-btn color="primary" size="small" class="mb-1" @click="nuevoRol()">Nuevo
                                         Rol</v-btn>
                                 </v-col>
                             </v-row>
@@ -39,6 +39,17 @@
                         <v-col cols="12">
                             <v-data-table :headers="headersRoles" :items="roles" item-key="idRol" :search="buscar"
                                 item-value="idRol" class="elevation-2" :loading="roles.length === 0">
+
+                                <template v-slot:item.cantidadPermisos="{ item }">
+                                    <span>{{ item.permisos.length }}</span>
+                                </template>
+
+                                <template v-slot:item.actions="{ item }">
+                                    <v-icon small class="mr-2" @click="seleccionarRolPorId(item.idRol)">mdi-pencil</v-icon>
+                                </template>
+                            
+
+
 
 
                             </v-data-table>
@@ -61,7 +72,7 @@
     <v-dialog v-model="dialog" max-width="800px">
         <v-card>
             <v-card-title class="mt-2">
-                <span class="headline">Nuevo Rol</span>
+                <span class="headline">{{ rol.idRol ? 'Actualizar Rol' : 'Nuevo Rol' }}</span>
 
                 <v-divider class="mt-2"></v-divider>
             </v-card-title>
@@ -107,7 +118,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-                <v-btn color="blue darken-1" text @click="asignarRoles()">Guardar</v-btn>
+                <v-btn color="blue darken-1" text @click="save()">Guardar</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -134,13 +145,49 @@ const dialog = ref(false);
 interface IRoles {
     idRol: number;
     nombreRol: string;
+    permisos : number[];
 }
 
+const save = async() => {
+    if (rol.value.idRol) {
+        await actualizarRoles();
+    } else {
+        await crearRoles();
+    }
+};
+
+
+const actualizarRoles = async () => {
+    try {
+        const response = await axios.post(`http://localhost:3001/admin/roles/actualizar`, {
+            idRol: rol.value.idRol,
+            nombreRol: rol.value.nombreRol,
+            permisos: permisoSeleccionado.value
+        });
+
+        alert(response.data.message);
+
+        getRoles();
+
+        rol.value = {} as IRoles;
+
+        permisoSeleccionado.value = [] as number[];
+
+        dialog.value = false;
+
+        console.log(response.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
 const headersRoles = ref([
     { title: 'Nº ', value: 'idRol' },
-    { title: 'Rol', value: 'nombreRol' }
+    { title: 'Rol', value: 'nombreRol' },
+    { title: 'Permisos', value: 'cantidadPermisos' },
+    { title: 'Acciones', value: 'actions', sortable: false }
 ]);
 
 
@@ -152,8 +199,42 @@ const getRoles = async () => {
         const response = await axios.get('http://localhost:3001/admin/roles');
         const p = [...response.data];
         roles.value = p
+        console.log(roles.value);
+        
     } catch (error) {
         console.error(error);
+    }
+};
+
+const nuevoRol = () => {
+    rol.value = {} as IRoles;
+    permisoSeleccionado.value = [] as number[];
+    dialog.value = true;
+};
+
+
+const crearRoles = async () => {
+    try {
+        const response = await axios.post('http://localhost:3001/admin/roles', {
+            nombreRol: rol.value.nombreRol,
+            permisos: permisoSeleccionado.value
+        });
+
+        alert(response.data.message);
+
+        getRoles();
+
+        rol.value = {} as IRoles;
+
+        permisoSeleccionado.value = [] as number[];
+
+        dialog.value = false;
+
+        console.log(response.data);
+
+    } catch (error) {
+        const e = error as IError;
+        console.error(e.response.data.message);
     }
 };
 
@@ -162,14 +243,19 @@ interface IPermisos {
     nombrePermiso: string;
 }
 
-const rol = ref({} as IRoles);
+const rol = ref({
+    idRol: 0,
+    nombreRol: '',
+    permisos: [] as number[]
+
+} as IRoles);
 
 const permisos = ref([] as IPermisos[]);
 
 
 const getPermisos = async () => {
 
-    try {
+    try {actualizarRoles
         const response = await axios.get('http://localhost:3001/admin/permissions');
         const p = [...response.data];
         permisos.value = p
@@ -187,6 +273,13 @@ const permisoSeleccionado = ref([] as number[]);
 //     dialog.value = true;
 // };
 
+const seleccionarRolPorId = (idRol: number) => {
+    const infoRol = roles.value.find((rol: IRoles) => rol.idRol === idRol) || {} as IRoles;
+    rol.value = { ...infoRol };
+    permisoSeleccionado.value = rol.value.permisos;
+    dialog.value = true;
+};
+
 onMounted(async () => {
     await getRoles();
     await getPermisos();
@@ -194,10 +287,6 @@ onMounted(async () => {
 });
 
 
-
-const errorMessage = (error: IError) => {
-    alert(error.response.data.message);
-}
 
 
 

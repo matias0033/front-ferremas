@@ -46,7 +46,7 @@
                         <v-col cols="12">
                             <v-row>
                                 <v-col cols="12" lg="6">
-                                    <h2>Ordenes de compra</h2>
+                                    <h2>Ordenes de compra (Comprador)</h2>
 
                                     <v-divider class="mt-3"></v-divider>
                                 </v-col>

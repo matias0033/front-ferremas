@@ -69,6 +69,16 @@
               rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Inventario">
             </v-card>
           </v-col>
+          <v-col cols="4">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/usuarios')"
+              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Usuarios">
+            </v-card>
+          </v-col>
+          <v-col cols="4">
+            <v-card elevation="2" class="py-8" @click="navegarRuta('/roles')"
+              rel="noopener noreferrer" rounded="lg" subtitle="" target="_blank" title="Roles">
+            </v-card>
+          </v-col>
 
 
 

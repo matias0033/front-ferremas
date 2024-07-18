@@ -7,7 +7,7 @@
                     <v-card-text>
 
                         <v-col cols="12" lg="6">
-                            <h2>Inventario</h2>
+                            <h2>Inventario (Gestor de inventario)</h2>
 
                             <v-divider class="mt-3"></v-divider>
                         </v-col>

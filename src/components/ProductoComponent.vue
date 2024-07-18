@@ -13,7 +13,7 @@
                             <v-row>
                                 <!-- titulo a la izq y iconos a la derecha en la misma fila -->
                                 <v-col cols="6">
-                                    <h2>Productos</h2>
+                                    <h2>Productos (Comprador)</h2>
                                     <v-divider class="mt-3"></v-divider>
                                 </v-col>
                                 <v-col cols="6" class="text-right">

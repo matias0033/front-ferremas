@@ -10,7 +10,7 @@
                         <v-col cols="12">
                             <v-row>
                                 <v-col cols="12" lg="6">
-                                    <h2>Crear nueva orden de compra </h2>
+                                    <h2>Crear nueva orden de compra (Comprar) </h2>
 
                                     <v-divider class="mt-3"></v-divider>
                                 </v-col>
